@@ -1,0 +1,12 @@
+FROM ubuntu:18.04
+
+MAINTAINER Jaedin Dhatt "jaedindhatt@gmail.com"
+
+RUN apt-get update -y && \ 
+    apt-get install -y python-pip python-dev
+
+RUN pip install -r requirements.txt
+
+ENTRYPOINT [ "python" ]
+
+CMD [ "app.py" ] 
