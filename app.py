@@ -31,7 +31,7 @@ def request_immediate(requestImmediate):
     logger.info("Start of immediate request")
 
     client = KafkaClient(hosts='{}:{}'.format(kafka_server, kafka_port))
-    topic = client.topics['{}'.format(kafka_topic)]
+    topic = client.topics[b'%b' % kafka_topic.encode()]
     producer = topic.get_sync_producer()
     msg = {"type": "requestImmediate",
            "datetime": datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
